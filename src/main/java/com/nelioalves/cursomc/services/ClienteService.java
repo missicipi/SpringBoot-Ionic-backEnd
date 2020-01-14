@@ -6,17 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nelioalves.cursomc.domain.Categoria;
+import com.nelioalves.cursomc.domain.Cliente;
 import com.nelioalves.cursomc.domain.Endereco;
 import com.nelioalves.cursomc.repositories.CategoriaRepository;
+import com.nelioalves.cursomc.repositories.ClienteRepository;
 
 @Service
-public class CategoriaService {
+public class ClienteService {
 
 	@Autowired
-	private CategoriaRepository repo;
+	private ClienteRepository repo;
 
-	public Optional<Endereco> buscar(Integer id) {
-		Optional<Endereco> obj = repo.findById(id);
+	public Optional<Cliente> buscar(Integer id) {
+		Optional<Cliente> obj = repo.findById(id);
 		return obj;
 		
 	}
