@@ -41,6 +41,9 @@ public class Cliente implements Serializable{
 	@CollectionTable(name="TELEFONE")
 	private Set<String> telefones = new HashSet<>();// Para declarar telefones sem repetir o set não aceita repetições dentro da coleção
 	
+	@OneToMany(mappedBy="cliente")//1 para muitos foi mapeado por cliente(classe)
+	private List<Pedido> pedido = new ArrayList<>();
+	
 	public Cliente() {}
 
 	public Cliente(Integer id, String nome, String email, String cpfouCnpj, TipoCliente tipo) {
@@ -134,6 +137,14 @@ public class Cliente implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public List<Pedido> getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
 	}
 	
 
