@@ -2,7 +2,9 @@ package com.nelioalves.cursomc.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Produto implements Serializable {
@@ -33,7 +36,10 @@ public class Produto implements Serializable {
 	inverseJoinColumns = @JoinColumn (name = "categoria_id")
 			)
 	
-	
+
+	//@OneToMany(mappedBy = "id.produto")
+	//private Set<ItemPedido> itens = new HashSet<>(); //colocando Set para a linguagem java me garantir que não vai ter item repetido
+
 	private List<Categoria>categorias = new ArrayList<>();
 	
 	public Produto() {}
@@ -48,6 +54,14 @@ public class Produto implements Serializable {
 	public Integer getId() {
 		return id;
 	}
+
+	/*public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
+	}*/
 
 	public void setId(Integer id) {
 		this.id = id;

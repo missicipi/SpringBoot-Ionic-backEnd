@@ -1,7 +1,5 @@
 package com.nelioalves.cursomc.domain.unums;
 
-import org.hibernate.boot.model.naming.IllegalIdentifierException;
-
 public enum TipoCliente {
 
 	PESSOASFISICA(1,"Pessoa Física"),
