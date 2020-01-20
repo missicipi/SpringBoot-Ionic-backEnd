@@ -2,34 +2,30 @@ package com.nelioalves.cursomc.domain;
 
 import javax.persistence.Entity;
 
-import com.nelioalves.cursomc.domain.unums.EstadoPagamento;
+import com.nelioalves.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
-public class PagamentoComCartao extends Pagamento{
-	
-	/**
-	 * 
-	 */
+public class PagamentoComCartao extends Pagamento {
 	private static final long serialVersionUID = 1L;
-	private Integer numumeroDeParcelas;
+
+	private Integer numeroDeParcelas;
 	
-	public PagamentoComCartao() {}
+	public PagamentoComCartao() {
+	}
 
 	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
 		super(id, estado, pedido);
-		this.numumeroDeParcelas = numeroDeParcelas;
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
 
-	public Integer getNumumeroDeParcelas() {
-		return numumeroDeParcelas;
+	public Integer getNumeroDeParcelas() {
+		return numeroDeParcelas;
 	}
 
-	public void setNumumeroDeParcelas(Integer numumeroDeParcelas) {
-		this.numumeroDeParcelas = numumeroDeParcelas;
+	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
 	
 	
-	
-	
-
+		
 }

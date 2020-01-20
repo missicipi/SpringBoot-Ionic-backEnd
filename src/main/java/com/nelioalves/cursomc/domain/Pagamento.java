@@ -10,32 +10,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-import com.nelioalves.cursomc.domain.unums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nelioalves.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED )//para gerar a herança com as subs classes
-public abstract class Pagamento implements Serializable{//abstrata para garantir que eu não vou instanciar nenhum objeto da classe pagamento
-
-	/**
-	 * 
-	 */
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private Integer id;
-	private EstadoPagamento estado;
-	
+	private Integer estado;
+
+	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name = "pedido_id")
-	@MapsId// para garantir que esse ID seja do pagamento
+	@JoinColumn(name="pedido_id")
+	@MapsId
 	private Pedido pedido;
 	
-	public Pagamento() {}
+	public Pagamento() {
+	}
 
 	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
-		this.estado = estado;
+		this.estado = estado.getCod();
 		this.pedido = pedido;
 	}
 
@@ -48,11 +47,11 @@ public abstract class Pagamento implements Serializable{//abstrata para garantir
 	}
 
 	public EstadoPagamento getEstado() {
-		return estado;
+		return EstadoPagamento.toEnum(estado);
 	}
 
 	public void setEstado(EstadoPagamento estado) {
-		this.estado = estado;
+		this.estado = estado.getCod();
 	}
 
 	public Pedido getPedido() {
@@ -87,6 +86,7 @@ public abstract class Pagamento implements Serializable{//abstrata para garantir
 			return false;
 		return true;
 	}
+	
 	
 	
 }
